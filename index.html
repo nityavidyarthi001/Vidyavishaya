@@ -19,6 +19,127 @@
         const { useState, useMemo } = React;
 
         const categories = [
+
+            {
+                id: 'ai-roles',
+                name: 'AI Roles & Capability Levels',
+                icon: 'fa-solid fa-user-gear',
+                color: 'from-indigo-500 to-violet-600',
+                items: [
+                    {
+                        title: 'AI User',
+                        desc: 'AI User uses AI to complete tasks. Uses existing AI tools to improve everyday productivity, learning, research, content creation, and other individual tasks.',
+                        isInteractiveModal: true,
+                        modalTitle: 'AI User — Uses AI to Complete Tasks',
+                        details: [
+                            {
+                                level: 'Role Definition',
+                                subtitle: 'Uses AI as a Tool',
+                                desc: 'Uses existing AI tools to improve everyday tasks. AI is primarily a tool that helps the person accomplish a specific task.'
+                            },
+                            {
+                                level: 'Typical Activities',
+                                subtitle: 'Task-Oriented AI Usage',
+                                desc: 'Uses AI to ask questions, get explanations, generate or edit content, summarize documents, research topics, brainstorm ideas, translate or rewrite content, learn, create presentations and drafts, and perform simple productivity tasks.'
+                            },
+                            {
+                                level: 'Core Purpose',
+                                subtitle: 'Complete Tasks',
+                                desc: 'Uses AI to complete or improve individual tasks without fundamentally changing how the person performs their profession.'
+                            },
+                            {
+                                level: 'Typical Question',
+                                subtitle: '“How can AI help me with this task?”',
+                                desc: 'The focus is on finding a useful AI capability for a particular task.'
+                            }
+                        ]
+                    },
+                    {
+                        title: 'AI Practitioner',
+                        desc: 'AI Practitioner works with AI to transform their work. Uses AI deeply and systematically as a professional work partner, combined with domain expertise.',
+                        isInteractiveModal: true,
+                        modalTitle: 'AI Practitioner — Uses AI to Transform Work',
+                        details: [
+                            {
+                                level: 'Role Definition',
+                                subtitle: 'Works with AI as a Professional Partner',
+                                desc: 'Uses AI deeply and systematically as part of professional practice. AI becomes an integral part of how the person performs their profession.'
+                            },
+                            {
+                                level: 'Typical Activities',
+                                subtitle: 'AI-Enabled Professional Practice',
+                                desc: 'Integrates AI into day-to-day professional work; uses AI for analysis, decision support, design, problem-solving and research; uses AI-assisted programming and development; creates workflows and automates tasks; uses AI agents and coding agents as work partners; and combines AI capabilities with domain expertise.'
+                            },
+                            {
+                                level: 'Core Purpose',
+                                subtitle: 'Transform Work',
+                                desc: 'Redesigns existing ways of working around AI to improve productivity, quality, decision-making, automation, and professional outcomes.'
+                            },
+                            {
+                                level: 'Typical Question',
+                                subtitle: '“How can I use AI to do my work better?”',
+                                desc: 'The focus is on systematically integrating AI into the person’s professional workflow and practice.'
+                            }
+                        ]
+                    },
+                    {
+                        title: 'AI Developer',
+                        desc: 'AI Developer builds with AI to build solutions. Uses existing AI technologies to create applications, products, workflows, agents, and enterprise solutions.',
+                        isInteractiveModal: true,
+                        modalTitle: 'AI Developer — Uses AI to Build Solutions',
+                        details: [
+                            {
+                                level: 'Role Definition',
+                                subtitle: 'Builds with AI',
+                                desc: 'Uses AI technologies and platforms to build software, applications, products, workflows, and enterprise solutions.'
+                            },
+                            {
+                                level: 'Typical Activities',
+                                subtitle: 'AI Solution Development',
+                                desc: 'Builds AI-powered applications and products; connects applications to LLMs and AI APIs; builds RAG systems; creates AI agents and agentic workflows; integrates AI into websites, applications and enterprise systems; builds AI-powered automation; fine-tunes and deploys models; designs AI application architecture; and evaluates AI application performance.'
+                            },
+                            {
+                                level: 'Core Purpose',
+                                subtitle: 'Build Solutions',
+                                desc: 'Turns AI capabilities into usable software and technical solutions that solve business or user problems.'
+                            },
+                            {
+                                level: 'Typical Question',
+                                subtitle: '“How can I build a solution using AI?”',
+                                desc: 'The focus is on engineering and delivering applications or solutions that use AI technology.'
+                            }
+                        ]
+                    },
+                    {
+                        title: 'AI Creator',
+                        desc: 'AI Creator builds AI and creates AI technology itself. Advances models, algorithms, learning techniques, training methods, and underlying AI capabilities.',
+                        isInteractiveModal: true,
+                        modalTitle: 'AI Creator — Creates AI Technology Itself',
+                        details: [
+                            {
+                                level: 'Role Definition',
+                                subtitle: 'Builds AI Itself',
+                                desc: 'Creates or advances the underlying AI technology at the model, algorithm, research, and learning-method level.'
+                            },
+                            {
+                                level: 'Typical Activities',
+                                subtitle: 'AI Research & Technology Creation',
+                                desc: 'Designs new ML/AI models and algorithms; develops model architectures and neural-network techniques; trains foundation models; develops new training methodologies; conducts AI research; develops new learning techniques; improves model capabilities and performance; optimizes model training and inference; and develops underlying AI technologies.'
+                            },
+                            {
+                                level: 'Core Purpose',
+                                subtitle: 'Create AI Technology',
+                                desc: 'Advances the capabilities of AI itself rather than primarily consuming AI or building applications on top of existing AI technology.'
+                            },
+                            {
+                                level: 'Typical Question',
+                                subtitle: '“How can we create or improve AI itself?”',
+                                desc: 'The focus is on creating new AI capabilities, improving models and algorithms, or advancing the underlying technology.'
+                            }
+                        ]
+                    }
+                ]
+            },
             {
                 id: 'python',
                 name: 'Python & Development',
@@ -193,7 +314,7 @@
         ];
 
         function App() {
-            const [selectedCategory, setSelectedCategory] = useState('python');
+            const [selectedCategory, setSelectedCategory] = useState('ai-roles');
             const [searchQuery, setSearchQuery] = useState('');
             const [activeModalItem, setActiveModalItem] = useState(null);
 
