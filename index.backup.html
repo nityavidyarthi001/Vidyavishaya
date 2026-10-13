@@ -1,0 +1,1299 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Tech & AI Knowledge Blueprint</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.5/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="bg-slate-950 text-slate-100 antialiased selection:bg-indigo-500 selection:text-white">
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        const { useState, useMemo } = React;
+
+        const categories = [
+
+            // ============================================================
+            // AI ROLES & CAPABILITY LEVELS
+            // ============================================================
+            {
+                id: 'ai-roles',
+                name: 'AI Roles & Capability Levels',
+                icon: 'fa-solid fa-user-gear',
+                color: 'from-indigo-500 to-violet-600',
+
+                items: [
+
+                    {
+                        title: 'AI User',
+
+                        desc: 'Uses AI to complete tasks.',
+
+                        corePurpose: 'Uses AI to complete tasks.',
+
+                        typicalQuestion: 'How can AI help me with this task?',
+
+                        isInteractiveModal: true,
+                        isAIRole: true,
+                        modalType: 'activities',
+                        modalTitle: 'Typical Activities',
+
+                        activities: [
+                            'Uses existing AI tools to accomplish individual tasks',
+                            'Asks questions and gets explanations',
+                            'Generates or edits content',
+                            'Summarizes documents',
+                            'Researches topics',
+                            'Brainstorms ideas',
+                            'Translates or rewrites content',
+                            'Uses AI for learning',
+                            'Creates presentations and drafts',
+                            'Performs simple productivity tasks'
+                        ]
+                    },
+
+                    {
+                        title: 'AI Practitioner',
+
+                        desc: 'Works with AI to transform their work.',
+
+                        corePurpose: 'Works with AI to transform their work.',
+
+                        typicalQuestion: 'How can I use AI to do my work better?',
+
+                        isInteractiveModal: true,
+                        isAIRole: true,
+                        modalType: 'activities',
+                        modalTitle: 'Typical Activities',
+
+                        activities: [
+                            'Uses AI extensively and systematically to transform how they perform their profession',
+                            'Integrates AI into day-to-day professional work',
+                            'Uses AI for analysis and decision support',
+                            'Uses AI for design, problem-solving and research',
+                            'Uses AI-assisted programming and development',
+                            'Uses AI to create workflows and automate tasks',
+                            'Uses AI agents and coding agents as work partners',
+                            'Redesigns existing processes around AI',
+                            'Combines AI capabilities with domain expertise',
+                            'Validates, refines and applies AI outputs'
+                        ]
+                    },
+
+                    {
+                        title: 'AI Developer',
+
+                        desc: 'Builds with AI to build solutions.',
+
+                        corePurpose: 'Builds with AI to build solutions.',
+
+                        typicalQuestion: 'How can I build a solution using AI?',
+
+                        isInteractiveModal: true,
+                        isAIRole: true,
+                        modalType: 'activities',
+                        modalTitle: 'Typical Activities',
+
+                        activities: [
+                            'Uses existing AI technologies to build applications and solutions',
+                            'Builds AI-powered applications and products',
+                            'Connects applications to LLMs and AI APIs',
+                            'Builds RAG systems',
+                            'Creates AI agents and agentic workflows',
+                            'Integrates AI into websites, applications and enterprise systems',
+                            'Builds AI-powered automation',
+                            'Fine-tunes and deploys models',
+                            'Designs AI application architecture',
+                            'Evaluates AI application performance'
+                        ]
+                    },
+
+                    {
+                        title: 'AI Creator',
+
+                        desc: 'Builds AI and creates AI technology itself.',
+
+                        corePurpose: 'Builds AI and creates AI technology itself.',
+
+                        typicalQuestion: 'How can we create or improve AI itself?',
+
+                        isInteractiveModal: true,
+                        isAIRole: true,
+                        modalType: 'activities',
+                        modalTitle: 'Typical Activities',
+
+                        activities: [
+                            'Creates or advances underlying AI technology',
+                            'Designs new ML/AI models and algorithms',
+                            'Develops model architectures',
+                            'Develops neural-network techniques',
+                            'Trains foundation models',
+                            'Develops new training methodologies',
+                            'Conducts AI research',
+                            'Develops new learning techniques',
+                            'Improves model capabilities and performance',
+                            'Optimizes model training and inference',
+                            'Develops underlying AI technologies'
+                        ]
+                    }
+
+                ]
+            },
+
+            // ============================================================
+            // PYTHON & DEVELOPMENT
+            // ============================================================
+            {
+                id: 'python',
+                name: 'Python & Development',
+                icon: 'fa-brands fa-python',
+                color: 'from-amber-500 to-yellow-600',
+
+                items: [
+
+                    {
+                        title: 'Why Python',
+                        desc: 'Readability, massive ecosystem, dynamic typing, and rapid prototyping capabilities.'
+                    },
+
+                    {
+                        title: 'Python Basics',
+
+                        desc: 'Click to explore fundamental execution models, dynamic typing, memory management, and core syntax principles.',
+
+                        isInteractiveModal: true,
+
+                        modalTitle: 'Python Core Fundamentals',
+
+                        details: [
+
+                            {
+                                level: 'Execution Model & Bytecode Compilation',
+                                subtitle: 'Bytecode & PVM Execution',
+                                desc: 'Source code is compiled into platform-independent bytecode before running on the Python Virtual Machine (PVM).'
+                            },
+
+                            {
+                                level: 'Dynamic Typing',
+                                subtitle: 'Runtime Type Resolution',
+                                desc: 'Variables act as references or labels to objects in memory, and types are resolved and checked at runtime rather than compile-time.'
+                            },
+
+                            {
+                                level: 'Object-Oriented Core',
+                                subtitle: 'First-Class Objects',
+                                desc: 'Everything in Python—including numbers, strings, functions, and modules—is a first-class object with an identity, type, and value.'
+                            },
+
+                            {
+                                level: 'Whitespace & Indentation',
+                                subtitle: 'Strict Syntax Formatting',
+                                desc: 'Code blocks and logical scopes are defined strictly by indentation rather than curly braces or semicolons.'
+                            },
+
+                            {
+                                level: 'Automatic Memory Management',
+                                subtitle: 'Reference Counting & Garbage Collection',
+                                desc: 'Memory allocation and deallocation are handled automatically via reference counting and a cyclic garbage collector.'
+                            },
+
+                            {
+                                level: 'Control Flow & Iteration',
+                                subtitle: 'Branching and Loops',
+                                desc: 'Logical branching (if, elif, else), conditional repetition (while), and collection traversal (for loops) dictate execution paths.'
+                            },
+
+                            {
+                                level: 'Functions & Modularity',
+                                subtitle: 'Scope and Reusability',
+                                desc: 'Reusable blocks of code defined with def that manage scope and support parameter passing, alongside module imports from the standard library.'
+                            },
+
+                            {
+                                level: 'Error & Exception Handling',
+                                subtitle: 'Fault Tolerance',
+                                desc: 'Runtime issues are managed structurally using try, except, else, and finally blocks to prevent unexpected program termination.'
+                            }
+
+                        ]
+                    },
+
+                    {
+                        title: 'Levels of System isolation',
+
+                        desc: 'Click to explore granular layers of isolation ranging from project-level packages to hardware virtual machines and virtual networks.',
+
+                        isInteractiveModal: true,
+
+                        modalTitle: 'Levels of System Isolation',
+
+                        details: [
+
+                            {
+                                level: 'Project-Level (Dependencies & Packages)',
+                                subtitle: 'Project-level package/dependency isolation (venv)',
+                                desc: 'Shares same Python Version, but different site-packages linked to the projects. Each project can have its own venv.'
+                            },
+
+                            {
+                                level: 'Language/Runtime-Level (Interpreters & Compilers)',
+                                subtitle: 'Language/Runtime-level isolation (pyenv)',
+                                desc: 'Multiple independent runtime versions managed on the same system (multiple python versions).'
+                            },
+
+                            {
+                                level: 'User-Space (Filesystems, Processes, Networks, Users via Containers)',
+                                subtitle: 'User-Space Virtualization (Containers like Docker)',
+                                desc: 'Shared OS kernel, but completely isolated user spaces. Different File Systems (Root FS), Process Space (PID), Network Stack (IP Address, Ports - two containers can run a webserver on port 80 without conflicting). Users and Permissions (Each Container has its own root folder).'
+                            },
+
+                            {
+                                level: 'Hardware-Level (Virtual CPUs, RAM, and Kernels via VMs)',
+                                subtitle: 'Hardware-Level Isolation (Virtual Machines)',
+                                desc: 'Shared physical hardware (CPU, RAM, motherboard), but completely virtualized hardware slices (CPU, RAM, storage, and network interfaces) and independent OS kernels managed by a hypervisor. Each VM gets its own dedicated slice of virtual hardware along with OS Kernel.'
+                            },
+
+                            {
+                                level: 'Network-Level (IP Spaces, Routing, and Firewalls via VPCs)',
+                                subtitle: 'Virtual Networks (Network Micro-Segmentation & VPCs)',
+                                desc: 'Shares same physical network interface cards (NICs), physical switches, physical routers, and physical copper/fiber cables. Separates Network Topology & IP Spaces (VPC/VLAN: 10.0.0.0/16), Routing and Firewalls (Firewall policies), Traffic Segregation (Packets from one virtual network cannot see or enter another).'
+                            }
+
+                        ]
+                    },
+
+                    {
+                        title: 'requirements.txt',
+                        desc: 'Flat text file declaring pinned package versions (package==version) for reproducible builds.'
+                    }
+
+                ]
+            },
+
+            // ============================================================
+            // API MANAGEMENT
+            // ============================================================
+            {
+                id: 'api',
+                name: 'API Management',
+                icon: 'fa-solid fa-network-wired',
+                color: 'from-blue-500 to-indigo-600',
+
+                items: [
+
+                    {
+                        title: 'API Types',
+                        desc: 'Grep API (pattern searching), WebHook API (event-driven HTTP push), WebStreaming API (real-time persistent feeds), SOAP API (XML contracts/WSDL), REST API (stateless JSON over HTTP).'
+                    },
+
+                    {
+                        title: 'Protocols',
+                        desc: 'FTP (file transfer), SMTP (email routing), HTTP/HTTPS (stateless web and API communication foundation).'
+                    },
+
+                    {
+                        title: 'API vs UI vs Web Scraping',
+                        desc: 'API (programmatic machine contract), UI (visual human interface), Web Scraping (automated DOM/HTML extraction).'
+                    },
+
+                    {
+                        title: 'Request Types',
+                        desc: 'Methods (GET, POST, PUT, PATCH, DELETE), headers, query parameters, and body payloads.'
+                    },
+
+                    {
+                        title: 'Response Types',
+                        desc: 'Status codes (200, 201, 400, 401, 404, 500) and payloads (JSON, XML, binary streams).'
+                    }
+
+                ]
+            },
+
+            // ============================================================
+            // ARCHITECTURES & FRAMEWORKS
+            // ============================================================
+            {
+                id: 'architecture',
+                name: 'Architectures & Frameworks',
+                icon: 'fa-solid fa-cubes',
+                color: 'from-emerald-500 to-teal-600',
+
+                items: [
+
+                    {
+                        title: 'LAB Architecture',
+                        desc: 'Multi-agent sandboxed research system collaborating across idea, plan, code, and validation layers.'
+                    },
+
+                    {
+                        title: 'MaaS Architecture',
+                        desc: 'Model as a Service (serverless API endpoints) & Multi-agent Architecture Search (automated supernet routing).'
+                    },
+
+                    {
+                        title: 'LangChain',
+                        desc: 'Modular orchestration framework connecting models, prompts, memory, and tools.'
+                    },
+
+                    {
+                        title: 'RAG',
+                        desc: 'Retrieval-Augmented Generation architectural pattern combining external data search with LLM generation.'
+                    },
+
+                    {
+                        title: 'Transformer / Attention',
+                        desc: 'Neural network architecture processing sequence tokens in parallel via self-attention mechanisms.'
+                    },
+
+                    {
+                        title: 'Multihead Attention',
+                        desc: 'Simultaneous sub-space attention projections allowing models to capture diverse contextual relationships.'
+                    }
+
+                ]
+            },
+
+            // ============================================================
+            // CORE LLM CONCEPTS
+            // ============================================================
+            {
+                id: 'llm',
+                name: 'Core LLM Concepts',
+                icon: 'fa-solid fa-brain',
+                color: 'from-purple-500 to-pink-600',
+
+                items: [
+
+                    {
+                        title: 'Tokenization & Tokens',
+                        desc: 'Sub-word text units converted into integer IDs by tokenizers (e.g., Byte-Pair Encoding).'
+                    },
+
+                    {
+                        title: 'How LLMs Create Embeddings',
+                        desc: 'Mapping tokens through multi-layer deep weight matrices into dense numerical vector representations.'
+                    },
+
+                    {
+                        title: 'Context Window',
+                        desc: 'Maximum token threshold (input prompt + output generation) processed in a single inference session.'
+                    },
+
+                    {
+                        title: 'Vectors vs Embeddings',
+                        desc: 'Vectors are general coordinate arrays; embeddings specialize in semantic representation of real-world concepts.'
+                    },
+
+                    {
+                        title: 'Tensors',
+                        desc: 'Multi-dimensional mathematical arrays generalizing scalars, vectors, and matrices.'
+                    },
+
+                    {
+                        title: 'VectorDB',
+                        desc: 'Specialized database optimized for high-dimensional approximate nearest neighbor (ANN) retrieval.'
+                    },
+
+                    {
+                        title: 'Hallucination',
+                        desc: 'Model generation of inaccurate, fabricated, or nonsensical outputs delivered with high confidence.'
+                    }
+
+                ]
+            },
+
+            // ============================================================
+            // RAG & RETRIEVAL
+            // ============================================================
+            {
+                id: 'rag',
+                name: 'RAG & Retrieval Strategies',
+                icon: 'fa-solid fa-magnifying-glass-chart',
+                color: 'from-orange-500 to-amber-600',
+
+                items: [
+
+                    {
+                        title: 'RAG Chain',
+                        desc: 'Query -> Retriever -> Context Augmentation -> LLM generation pipeline sequence.'
+                    },
+
+                    {
+                        title: 'Cosine Similarity',
+                        desc: 'Mathematical angle calculation measuring vector directional proximity in multi-dimensional spaces.'
+                    },
+
+                    {
+                        title: 'Chunking Strategy',
+                        desc: 'Document segmentation tactics (fixed, recursive, semantic) to prepare source text for embedding.'
+                    },
+
+                    {
+                        title: 'MMR (Maximal Marginal Relevance)',
+                        desc: 'Retrieval algorithm balancing high query relevance with result diversity to eliminate redundancy.'
+                    }
+
+                ]
+            },
+
+            // ============================================================
+            // AI AGENTS & INTERACTION
+            // ============================================================
+            {
+                id: 'agents',
+                name: 'AI Agents & Interaction',
+                icon: 'fa-solid fa-robot',
+                color: 'from-rose-500 to-red-600',
+
+                items: [
+
+                    {
+                        title: 'Runnable',
+                        desc: 'Standardized framework interface abstraction supporting invoke, stream, and batch executions.'
+                    },
+
+                    {
+                        title: 'Creating Chatbots',
+                        desc: 'Managing multi-turn conversation loops, chat memory persistence, and dynamic prompt templates.'
+                    },
+
+                    {
+                        title: 'Prompt Engineering & Grounding',
+                        desc: 'Structuring instructions and tethering model generations strictly to verified reference documents.'
+                    },
+
+                    {
+                        title: 'Guardrails',
+                        desc: 'Safety wrappers for input/output validation, PII masking, and jailbreak prevention.'
+                    },
+
+                    {
+                        title: 'Advanced Agent Patterns (Uber)',
+                        desc: 'Financial Slack SQL agent, Finch multi-agent supervisor pattern, and Enhanced Agentic RAG.'
+                    },
+
+                    {
+                        title: 'HITL (Human-In-The-Loop)',
+                        desc: 'Mandatory human confirmation gates before executing high-stakes or write operations.'
+                    }
+
+                ]
+            },
+
+            // ============================================================
+            // MISCELLANEOUS / TOOLS
+            // ============================================================
+            {
+                id: 'tools',
+                name: 'Miscellaneous / Tools',
+                icon: 'fa-solid fa-toolbox',
+                color: 'from-cyan-500 to-blue-600',
+
+                items: [
+
+                    {
+                        title: 'Shared Folder',
+                        desc: 'Network-mounted or local directory shared across multiple compute nodes or containers.'
+                    },
+
+                    {
+                        title: 'Model vs Modal',
+                        desc: 'Model refers to a trained neural network artifact; Modal is a serverless execution platform or UI popup window.'
+                    },
+
+                    {
+                        title: '.md (Markdown)',
+                        desc: 'Lightweight plain-text markup language for documentation, READMEs, and prompt templates.'
+                    },
+
+                    {
+                        title: 'Harness',
+                        desc: 'Execution harness providing sandboxed infrastructure and evaluation tooling to test and benchmark workflows.'
+                    }
+
+                ]
+            }
+
+        ];
+
+
+        // ================================================================
+        // APP
+        // ================================================================
+        function App() {
+
+            // AI Roles is now the default opening module
+            const [selectedCategory, setSelectedCategory] = useState('ai-roles');
+
+            const [searchQuery, setSearchQuery] = useState('');
+
+            const [activeModalItem, setActiveModalItem] = useState(null);
+
+
+            // ------------------------------------------------------------
+            // Current category
+            // ------------------------------------------------------------
+            const currentCategoryData = useMemo(() => {
+
+                return categories.find(
+                    c => c.id === selectedCategory
+                );
+
+            }, [selectedCategory]);
+
+
+            // ------------------------------------------------------------
+            // Search
+            // ------------------------------------------------------------
+            const filteredCategories = useMemo(() => {
+
+                if (!searchQuery.trim()) {
+                    return categories;
+                }
+
+                const query = searchQuery.toLowerCase();
+
+                return categories
+                    .map(cat => ({
+
+                        ...cat,
+
+                        items: cat.items.filter(item =>
+
+                            item.title.toLowerCase().includes(query) ||
+
+                            item.desc.toLowerCase().includes(query) ||
+
+                            (item.corePurpose || '')
+                                .toLowerCase()
+                                .includes(query) ||
+
+                            (item.typicalQuestion || '')
+                                .toLowerCase()
+                                .includes(query)
+
+                        )
+
+                    }))
+                    .filter(cat => cat.items.length > 0);
+
+            }, [searchQuery]);
+
+
+            return (
+
+                <div className="min-h-screen flex flex-col bg-slate-950 text-slate-100 relative">
+
+                    {/* ====================================================
+                        HEADER
+                    ==================================================== */}
+
+                    <header className="border-b border-slate-800 bg-slate-900/50 backdrop-blur sticky top-0 z-50">
+
+                        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+
+                            <div className="flex items-center space-x-3">
+
+                                <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-500 to-purple-600 flex items-center justify-center shadow-lg shadow-indigo-500/20">
+
+                                    <i className="fa-solid fa-microchip text-white text-lg"></i>
+
+                                </div>
+
+                                <div>
+
+                                    <h1 className="font-extrabold text-lg tracking-tight bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">
+                                        Tech & AI Knowledge Blueprint
+                                    </h1>
+
+                                    <p className="text-xs text-slate-400">
+                                        Interactive Technical Master Reference
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            {/* Search */}
+
+                            <div className="relative w-72 sm:w-96">
+
+                                <span className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+
+                                    <i className="fa-solid fa-magnifying-glass text-sm"></i>
+
+                                </span>
+
+
+                                <input
+
+                                    type="text"
+
+                                    value={searchQuery}
+
+                                    onChange={(e) =>
+                                        setSearchQuery(e.target.value)
+                                    }
+
+                                    placeholder="Search concepts across all topics..."
+
+                                    className="w-full pl-9 pr-4 py-2 bg-slate-900 border border-slate-800 rounded-xl text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all"
+
+                                />
+
+
+                                {searchQuery && (
+
+                                    <button
+
+                                        onClick={() =>
+                                            setSearchQuery('')
+                                        }
+
+                                        className="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-slate-200"
+
+                                    >
+
+                                        <i className="fa-solid fa-circle-xmark"></i>
+
+                                    </button>
+
+                                )}
+
+                            </div>
+
+                        </div>
+
+                    </header>
+
+
+                    {/* ====================================================
+                        MAIN LAYOUT
+                    ==================================================== */}
+
+                    <div className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col md:flex-row gap-8">
+
+
+                        {/* ==================================================
+                            SIDEBAR
+                        ================================================== */}
+
+                        <aside className="w-full md:w-80 shrink-0">
+
+                            <div className="sticky top-28 bg-slate-900/40 border border-slate-800/80 rounded-2xl p-4 backdrop-blur-sm">
+
+                                <h2 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3 px-3">
+                                    Blueprint Modules
+                                </h2>
+
+
+                                <nav className="space-y-1">
+
+                                    {categories.map((cat) => {
+
+                                        const isActive =
+                                            selectedCategory === cat.id &&
+                                            !searchQuery;
+
+
+                                        return (
+
+                                            <button
+
+                                                key={cat.id}
+
+                                                onClick={() => {
+
+                                                    setSelectedCategory(cat.id);
+
+                                                    setSearchQuery('');
+
+                                                }}
+
+                                                className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-medium transition-all ${
+                                                    isActive
+
+                                                        ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/30'
+
+                                                        : 'text-slate-300 hover:bg-slate-800/60 hover:text-white'
+                                                }`}
+
+                                            >
+
+                                                <div className="flex items-center space-x-3">
+
+                                                    <div
+                                                        className={`w-7 h-7 rounded-lg bg-gradient-to-tr ${cat.color} flex items-center justify-center text-xs text-white shadow-sm`}
+                                                    >
+
+                                                        <i className={cat.icon}></i>
+
+                                                    </div>
+
+                                                    <span className="truncate text-left">
+                                                        {cat.name}
+                                                    </span>
+
+                                                </div>
+
+
+                                                <span
+                                                    className={`text-xs px-2 py-0.5 rounded-full ${
+                                                        isActive
+                                                            ? 'bg-indigo-700 text-indigo-100'
+                                                            : 'bg-slate-800 text-slate-400'
+                                                    }`}
+                                                >
+                                                    {cat.items.length}
+                                                </span>
+
+                                            </button>
+
+                                        );
+
+                                    })}
+
+                                </nav>
+
+                            </div>
+
+                        </aside>
+
+
+                        {/* ==================================================
+                            CONTENT
+                        ================================================== */}
+
+                        <main className="flex-1 min-w-0">
+
+
+                            {/* =================================================
+                                SEARCH RESULTS
+                            ================================================= */}
+
+                            {searchQuery ? (
+
+                                <div className="space-y-6">
+
+                                    <div className="flex items-center justify-between border-b border-slate-800 pb-4">
+
+                                        <h2 className="text-xl font-bold text-white flex items-center space-x-2">
+
+                                            <span>
+                                                Search Results for
+                                            </span>
+
+                                            <span className="text-indigo-400">
+                                                "{searchQuery}"
+                                            </span>
+
+                                        </h2>
+
+
+                                        <span className="text-xs text-slate-400">
+
+                                            Found across {filteredCategories.length} modules
+
+                                        </span>
+
+                                    </div>
+
+
+                                    {filteredCategories.length === 0 ? (
+
+                                        <div className="text-center py-20 bg-slate-900/20 border border-slate-800/60 rounded-2xl">
+
+                                            <i className="fa-regular fa-folder-open text-4xl text-slate-600 mb-3"></i>
+
+                                            <p className="text-slate-400 font-medium">
+                                                No concepts matched your query.
+                                            </p>
+
+                                        </div>
+
+                                    ) : (
+
+                                        filteredCategories.map(cat => (
+
+                                            <div
+                                                key={cat.id}
+                                                className="space-y-3"
+                                            >
+
+                                                <div className="flex items-center space-x-2 text-slate-400 font-semibold text-xs tracking-wider uppercase">
+
+                                                    <i
+                                                        className={`${cat.icon} text-indigo-400`}
+                                                    ></i>
+
+                                                    <span>
+                                                        {cat.name}
+                                                    </span>
+
+                                                </div>
+
+
+                                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+                                                    {cat.items.map((item, idx) => (
+
+                                                        <div
+
+                                                            key={idx}
+
+                                                            onClick={() => {
+
+                                                                if (item.isInteractiveModal) {
+
+                                                                    setActiveModalItem(item);
+
+                                                                }
+
+                                                            }}
+
+                                                            className={`bg-slate-900/60 border border-slate-800 rounded-xl p-5 hover:border-slate-700 transition-all group ${
+                                                                item.isInteractiveModal
+                                                                    ? 'cursor-pointer hover:border-indigo-500/50'
+                                                                    : ''
+                                                            }`}
+
+                                                        >
+
+                                                            <div className="flex items-center justify-between mb-2">
+
+                                                                <h3 className="font-bold text-slate-100 group-hover:text-indigo-400 transition-colors">
+                                                                    {item.title}
+                                                                </h3>
+
+
+                                                                {item.isInteractiveModal && (
+
+                                                                    <span className="text-xs text-indigo-400 bg-indigo-500/10 px-2 py-0.5 rounded border border-indigo-500/20">
+
+                                                                        Interactive ↗
+
+                                                                    </span>
+
+                                                                )}
+
+                                                            </div>
+
+
+                                                            {item.isAIRole ? (
+
+                                                                <div className="text-sm leading-relaxed">
+
+                                                                    <p className="font-semibold text-slate-200">
+                                                                        {item.corePurpose}
+                                                                    </p>
+
+                                                                    <p className="text-slate-400 mt-1">
+
+                                                                        <span className="font-semibold text-slate-300">
+                                                                            Typical Question:
+                                                                        </span>{' '}
+
+                                                                        {item.typicalQuestion}
+
+                                                                    </p>
+
+                                                                </div>
+
+                                                            ) : (
+
+                                                                <p className="text-sm text-slate-400 leading-relaxed">
+                                                                    {item.desc}
+                                                                </p>
+
+                                                            )}
+
+                                                        </div>
+
+                                                    ))}
+
+                                                </div>
+
+                                            </div>
+
+                                        ))
+
+                                    )}
+
+                                </div>
+
+                            ) : currentCategoryData && (
+
+                                <div className="space-y-6">
+
+
+                                    {/* =================================================
+                                        MODULE HEADER
+                                    ================================================= */}
+
+                                    <div className="bg-gradient-to-r from-slate-900 to-slate-900/40 border border-slate-800 rounded-2xl p-6 md:p-8 flex items-center justify-between">
+
+                                        <div className="space-y-2">
+
+                                            <div className="flex items-center space-x-3">
+
+                                                <div
+                                                    className={`w-12 h-12 rounded-xl bg-gradient-to-tr ${currentCategoryData.color} flex items-center justify-center text-white text-xl shadow-lg`}
+                                                >
+
+                                                    <i className={currentCategoryData.icon}></i>
+
+                                                </div>
+
+
+                                                <div>
+
+                                                    <h2 className="text-2xl font-extrabold text-white">
+                                                        {currentCategoryData.name}
+                                                    </h2>
+
+                                                    <p className="text-sm text-slate-400">
+                                                        {currentCategoryData.items.length} core concepts & frameworks
+                                                    </p>
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+
+                                    {/* =================================================
+                                        CARDS
+                                    ================================================= */}
+
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+                                        {currentCategoryData.items.map((item, idx) => (
+
+                                            <div
+
+                                                key={idx}
+
+                                                onClick={() => {
+
+                                                    if (item.isInteractiveModal) {
+
+                                                        setActiveModalItem(item);
+
+                                                    }
+
+                                                }}
+
+                                                className={`bg-slate-900/60 border border-slate-800/80 rounded-2xl p-6 hover:bg-slate-900 hover:border-slate-700 transition-all flex flex-col justify-between group shadow-sm hover:shadow-md ${
+                                                    item.isInteractiveModal
+                                                        ? 'cursor-pointer border-indigo-500/30 bg-indigo-950/10 hover:border-indigo-500'
+                                                        : ''
+                                                }`}
+
+                                            >
+
+                                                <div>
+
+
+                                                    {/* Card top row */}
+
+                                                    <div className="flex items-center justify-between mb-3">
+
+                                                        <span className="text-xs font-bold font-mono px-2.5 py-1 rounded-md bg-slate-800 text-indigo-400 border border-slate-700/50">
+
+                                                            #{idx + 1}
+
+                                                        </span>
+
+
+                                                        {item.isInteractiveModal ? (
+
+                                                            <span className="text-xs font-semibold text-indigo-300 bg-indigo-500/20 px-2.5 py-1 rounded-lg border border-indigo-500/30 flex items-center space-x-1.5">
+
+                                                                <span>
+                                                                    {item.isAIRole
+                                                                        ? 'Typical Activities'
+                                                                        : 'Explore Details'
+                                                                    }
+                                                                </span>
+
+                                                                <i className="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+
+                                                            </span>
+
+                                                        ) : (
+
+                                                            <div className="w-2 h-2 rounded-full bg-slate-700 group-hover:bg-indigo-500 transition-colors"></div>
+
+                                                        )}
+
+                                                    </div>
+
+
+                                                    {/* Card title */}
+
+                                                    <h3 className="font-bold text-lg text-slate-100 mb-2 group-hover:text-indigo-300 transition-colors">
+                                                        {item.title}
+                                                    </h3>
+
+
+                                                    {/* =================================================
+                                                        AI ROLE CARD
+                                                    ================================================= */}
+
+                                                    {item.isAIRole ? (
+
+                                                        <div className="text-sm leading-relaxed">
+
+                                                            <p className="font-semibold text-slate-200">
+                                                                {item.corePurpose}
+                                                            </p>
+
+                                                            <p className="text-slate-400 mt-1">
+
+                                                                <span className="font-semibold text-slate-300">
+                                                                    Typical Question:
+                                                                </span>{' '}
+
+                                                                {item.typicalQuestion}
+
+                                                            </p>
+
+                                                        </div>
+
+                                                    ) : (
+
+                                                        <p className="text-sm text-slate-400 leading-relaxed">
+                                                            {item.desc}
+                                                        </p>
+
+                                                    )}
+
+                                                </div>
+
+                                            </div>
+
+                                        ))}
+
+                                    </div>
+
+                                </div>
+
+                            )}
+
+                        </main>
+
+                    </div>
+
+
+                    {/* ========================================================
+                        DETAILED INTERACTIVE MODAL
+                    ======================================================== */}
+
+                    {activeModalItem && (
+
+                        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md animate-fadeIn">
+
+                            <div className="bg-slate-900 border border-slate-800 rounded-3xl max-w-3xl w-full max-h-[90vh] flex flex-col shadow-2xl overflow-hidden">
+
+
+                                {/* =================================================
+                                    MODAL HEADER
+                                ================================================= */}
+
+                                <div className="p-6 border-b border-slate-800 flex items-center justify-between bg-slate-900/90">
+
+                                    <div className="flex items-center space-x-3">
+
+                                        <div className="w-10 h-10 rounded-xl bg-indigo-600/20 border border-indigo-500/30 flex items-center justify-center text-indigo-400">
+
+                                            <i className="fa-solid fa-layer-group"></i>
+
+                                        </div>
+
+
+                                        <div>
+
+                                            <h2 className="text-xl font-bold text-white">
+                                                {activeModalItem.title}
+                                            </h2>
+
+                                            <p className="text-xs text-slate-400">
+                                                {activeModalItem.modalTitle || 'Comprehensive Breakdown'}
+                                            </p>
+
+                                        </div>
+
+                                    </div>
+
+
+                                    <button
+
+                                        onClick={() =>
+                                            setActiveModalItem(null)
+                                        }
+
+                                        className="w-9 h-9 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white flex items-center justify-center transition-colors"
+
+                                    >
+
+                                        <i className="fa-solid fa-xmark text-lg"></i>
+
+                                    </button>
+
+                                </div>
+
+
+                                {/* =================================================
+                                    MODAL BODY
+                                ================================================= */}
+
+                                <div className="p-6 overflow-y-auto space-y-4 custom-scrollbar">
+
+
+                                    {/* =================================================
+                                        AI ROLE ACTIVITIES
+                                    ================================================= */}
+
+                                    {activeModalItem.modalType === 'activities' ? (
+
+                                        <ul className="space-y-3">
+
+                                            {activeModalItem.activities.map(
+                                                (activity, index) => (
+
+                                                    <li
+
+                                                        key={index}
+
+                                                        className="flex items-start gap-3 text-sm text-slate-300 leading-relaxed"
+
+                                                    >
+
+                                                        <span className="mt-2 w-1.5 h-1.5 rounded-full bg-indigo-500 flex-shrink-0"></span>
+
+                                                        <span>
+                                                            {activity}
+                                                        </span>
+
+                                                    </li>
+
+                                                )
+                                            )}
+
+                                        </ul>
+
+                                    ) : (
+
+                                        /* =================================================
+                                            EXISTING DETAIL MODALS
+                                        ================================================= */
+
+                                        activeModalItem.details.map(
+                                            (detail, index) => (
+
+                                                <div
+
+                                                    key={index}
+
+                                                    className="bg-slate-950/60 border border-slate-800/80 rounded-2xl p-5 hover:border-indigo-500/40 transition-all"
+
+                                                >
+
+                                                    <div className="flex items-center space-x-2 text-indigo-400 font-mono text-xs font-bold uppercase tracking-wider mb-1">
+
+                                                        <span>
+                                                            Point 0{index + 1}:
+                                                        </span>
+
+                                                        <span className="text-slate-300">
+                                                            {detail.level}
+                                                        </span>
+
+                                                    </div>
+
+
+                                                    <h4 className="font-bold text-base text-white mb-2">
+                                                        {detail.subtitle}
+                                                    </h4>
+
+
+                                                    <p className="text-sm text-slate-400 leading-relaxed bg-slate-900/50 p-3.5 rounded-xl border border-slate-800/60">
+
+                                                        {detail.desc}
+
+                                                    </p>
+
+                                                </div>
+
+                                            )
+                                        )
+
+                                    )}
+
+                                </div>
+
+
+                                {/* =================================================
+                                    MODAL FOOTER
+                                ================================================= */}
+
+                                <div className="p-4 border-t border-slate-800 bg-slate-900/90 flex justify-end">
+
+                                    <button
+
+                                        onClick={() =>
+                                            setActiveModalItem(null)
+                                        }
+
+                                        className="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-sm rounded-xl transition-all shadow-lg shadow-indigo-600/20"
+
+                                    >
+
+                                        Close View
+
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    )}
+
+                </div>
+
+            );
+
+        }
+
+
+        // ================================================================
+        // RENDER APP
+        // ================================================================
+
+        ReactDOM.render(
+            <App />,
+            document.getElementById('root')
+        );
+
+    </script>
+
+</body>
+</html>
